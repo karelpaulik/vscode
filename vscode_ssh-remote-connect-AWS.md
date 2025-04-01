@@ -45,6 +45,14 @@ Host Linux-A
 
 Vybrat dle zadaného názvu v configu: "Linux-A" - Connect
 
+### files.watcherExclude
+- Settings
+- hledat: files.watcherExclude
+- přidat: **/node_modules/**
+- přidat: **/nodejs/node_modules/**
+- uložit
+- restartovat VSCODE
+
 ### Odpojení: 
 - F1
 - Remote-SSH: Kill VS Code Server on Host...
@@ -56,4 +64,6 @@ Vybrat dle zadaného názvu v configu: "Linux-A" - Connect
 
 ### Jak odstranit připojení, které je definované v VSCODE
 Ve VSCODE nejde přes UI vybrat existující připojení. Je nutno otevřít config daného připojení a smazat jeho obsah.
-  
+
+# Práce v VSCODE s nodejs
+Nepouštět příkazy přes VSCODE terminál. Když jsem dal "npm install express" tak to zablokovalo ubuntu server.
