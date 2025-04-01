@@ -20,6 +20,7 @@ Nastavení práv - Jak na to:
 - Zabezpečení
 - Upřesnit - zakázat dědičnost - Převést zděděná oprávnění na ... (Jinak nebue fungovat další krok)
 - Upravit - Ponechat pouze jednoho uživatele - mě. Plný přístup asi není potřeba: ČÍST + ČJÍST A SPOUŠTĚT.
+- Upravoval jsem tak, že jsem v minulém kroku včechny uživatele smazal a následně vytvořil jednoho "jmeno.prijmeni"
 
 ### Kontrola spojení přes "Powershell":
 - Spustit powershell (není třeba as admin)
@@ -82,6 +83,7 @@ Na Linux serveru vznikne po připojení adresář:
 
 ```
 {
+  // Zakázání sledování změn souborů a indexování
   "files.watcherExclude": {
     "**/**": true
   },
@@ -95,37 +97,47 @@ Na Linux serveru vznikne po připojení adresář:
   },
   "search.useGlobalIgnoreFiles": false,
   "search.useParentIgnoreFiles": false,
+
+  // Zakázání rozšíření a jejich doporučení
   "extensions.ignoreRecommendations": true,
+
+  // Omezení SSH a Remote-SSH interakcí
   "remote.SSH.showLoginTerminal": false,
+  "remote.SSH.useLocalServer": false,          // Použije systémový SSH klient místo lokálního serveru VS Code
+  "remote.SSH.connectTimeout": 15000,          // Zkrácení timeoutu připojení na 15 sekund
+  "remote.SSH.serverInstallTimeout": 30000,    // Omezení času na instalaci VS Code Serveru na 30 sekund
+
+  // Vypnutí Git integrace
   "git.enabled": false,
   "git.autorefresh": false,
-  "editor.occurrencesHighlight": "off",
+
+  // Zakázání funkcí editoru
+  "editor.occurrencesHighlight": false,
   "editor.codeLens": false,
-  "files.autoSave": "off",
-  "editor.formatOnSave": false,
-  "editor.suggestOnTriggerCharacters": false,
-  "telemetry.telemetryLevel": "off",
-  "typescript.disableAutomaticTypeAcquisition": true,
-  "javascript.validate.enable": false,
-  "typescript.validate.enable": false,
   "editor.minimap.enabled": false,
   "editor.hover.enabled": false,
-  "editor.lightbulb.enabled": "off",
+  "editor.lightbulb.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "other": false,
     "comments": false,
     "strings": false
-  }
+  },
+  "editor.formatOnSave": false,
+  "editor.suggestOnTriggerCharacters": false,
+
+  // Vypnutí IntelliSense a validace
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
+
+  // Omezení terminálu
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.enableFileWatching": false,
+
+  // Zakázání automatického ukládání a telemetrie
+  "files.autoSave": "off",
+  "telemetry.telemetryLevel": "off"
 }
 ```
-
-### Další řádky by ještě mohly být:
-```
-"remote.SSH.useLocalServer": false    Zejména tento.
-"remote.SSH.connectTimeout": 15000
-"terminal.integrated.inheritEnv": false,
-"terminal.integrated.enableFileWatching": false
-```
-
 
