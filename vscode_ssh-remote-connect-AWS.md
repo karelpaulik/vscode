@@ -26,6 +26,9 @@ Nastavení práv - Jak na to:
 - ssh -i D:\Data\AWS\2\LightsailDefaultKey-eu-central-1.pem ubuntu@3.126.248.125
 - musí být zadaná IP adresa. bedobe.eu to nebere
 
+### Linux swapování
+Určitě je vhodné mít zaplé swapování na linuxu.
+
 ### VSCODE
 Pro vzdálené připojení přes VSCODE je potřeba mít nainstalovány extension:
 - Remote - SSH
